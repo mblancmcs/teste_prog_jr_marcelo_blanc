@@ -101,7 +101,7 @@
         $objDb = new db;
         $link = $objDb->conecta_db();
 
-        $sql = "SELECT p.id, p.nome, p.cpf, p.rg, p.data_nascimento, p.data_cadastro, p.data_atualizacao, p.data_exclusao, tel.id, tel.telefone, e.id, e.cep, e.endereco, e.numero, est.uf FROM pessoas AS p INNER JOIN enderecos AS e ON(p.endereco_id = e.id) LEFT JOIN telefones AS tel ON(p.id = tel.pessoa_id) INNER JOIN estados AS est ON (est.id = e.estado_id)";
+        $sql = "SELECT p.id, p.nome, p.cpf, p.rg, p.data_nascimento, p.data_cadastro, p.data_atualizacao, p.data_exclusao, tel.id, tel.telefone, e.id, e.cep, e.endereco, e.numero, est.uf FROM pessoas AS p INNER JOIN enderecos AS e ON(p.endereco_id = e.id) LEFT JOIN telefones AS tel ON(p.id = tel.pessoa_id) INNER JOIN estados AS est ON (est.id = e.estado_id) ORDER BY p.id DESC";
 
         $resultado_query = mysqli_query($link, $sql);
         
@@ -153,7 +153,7 @@
 
         $sql="DELETE FROM enderecos WHERE id = '$endereco_id'";
 
-        /* Redirecionamento não funcionando no try catch da função
+        /* -----Redirecionamento----- não funcionando no try catch da função
         try{
             mysqli_query($link, $sql);
         } catch(mysqli_sql_exception) {

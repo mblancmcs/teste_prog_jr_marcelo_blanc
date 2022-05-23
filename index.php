@@ -88,6 +88,12 @@
                                 echo '<span style="color:red" >É preciso fazer login para acessar a páginas protegidas.</span>';
                                 break;
                         }
+                    } else if(isset($_GET['msg'])){
+                        switch($_GET['msg']){
+                            case 0:
+                                echo '<span style="color:green"> Volte sempre ! </span>';
+                                break;
+                        }
                     }
                 ?>
 
