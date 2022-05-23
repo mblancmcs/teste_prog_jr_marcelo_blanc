@@ -53,14 +53,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!--PARA INICIALIZAR O TOOTLTIP -->
-    <script>
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="popover"]').popover()
-      })
-    </script>
-
     <title>Sistema</title>
     <script>
 
@@ -107,7 +99,7 @@
         <div class="container2">
             <form id="form-cadastro" action="crud_pessoas.php" method="post">
 
-                <h1>Cadastro:</h1>
+                <h1>Cadastro</h1>
 
                 <label class="espaco-label" for="nome">Nome:
                 <input id="nome" name="nome" type="text" maxlength="255" required /></label>
@@ -164,6 +156,11 @@
         <div class="tabela-responsiva">
             <h2>Cadastros realizados (atualizar / deletar)</h2>
             <table rules="all">
+                <caption style="text-align:center;">
+                    <?php if(count($tabela_pessoas) == 0) {
+                        echo '<b><p>Não há dados cadastrados no momento.</p></b>';
+                    } ?>
+                </caption>
                 <thead>
                     <th>Nome</th>
                     <th>CPF</th>
@@ -180,8 +177,8 @@
                     <th>Atz.</th>
                     <th>Del.</th>
                 </thead>
-                <tbody>
 
+                <tbody>
                     <?php for($i=0; $i < count($tabela_pessoas); $i++) { ?>
                     <tr>
                         <form method="post" action="crud_pessoas.php">

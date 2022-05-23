@@ -1,9 +1,5 @@
 <?php
 
-    session_start();
-
-    if(!isset($_SESSION['usuario'])){
-        header('location:index.php?erro=1');
-    }
+    require_once('../../valida_login_prog_jr_marcelo_blanc/valida_acesso.php');
 
 ?>
