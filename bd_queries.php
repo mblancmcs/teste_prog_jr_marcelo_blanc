@@ -167,4 +167,21 @@
 
     }
 
+    function buscaIdUf($valor_uf){
+
+        $objDb = new db;
+        $link = $objdb->conecta_db();
+
+        $sql = "SELECT id FROM estados WHERE uf = '$valor_uf'";
+
+        $resultado_query = mysqli_query($link, $sql);
+
+        if($resultado_query) {
+            return mysqli_fetch_all($resultado_query);
+        } else  {
+            die(mysqli_error($link));
+        }
+
+    }
+
 ?>

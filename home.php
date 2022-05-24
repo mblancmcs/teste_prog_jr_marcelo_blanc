@@ -83,6 +83,82 @@
             $('.cpf').mask('000.000.000-00');
             $('.cep').mask('00.000-000');
 
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#endereco").val("");
+                //$("#bairro").val("");
+                //$("#cidade").val("");
+                $("#uf").val("0");
+                //$("#ibge").val("");
+            }
+            
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#endereco").val("...");
+                        //$("#bairro").val("...");
+                        //$("#cidade").val("...");
+                        //$("#uf").val("...");
+                        //$("#ibge").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#endereco").val(dados.logradouro);
+                                //$("#bairro").val(dados.bairro);
+                                //$("#cidade").val(dados.localidade);
+                                //$("#uf").val(dados.uf);
+                                //$("#ibge").val(dados.ibge);
+
+                                /*
+                                let valor_uf = dados.uf;
+
+                                $.ajax({
+                                    url:'buscaIdUf.php',
+                                    method:'post',
+                                    data: { valor_uf: 'valor_uf' },
+                                    success: function(data){
+                                        const resultado = JSON.parse(data);
+                                        $('#numero').val(resultado.id_uf);
+                                        alert('valor_uf');
+                                    }
+                                });
+                                */
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+
         });
 
         function showModal(id){
@@ -116,9 +192,9 @@
                 
                 <fieldset>
                     <legend>Endereço</legend>
-                    <label for="cep" >CEP:</label>
-                    <input id="cep" class="cep" name="cep" type="text" pattern="[0-9]{2}\.[0-9]{3}-[0-9]{3}"  />
-                    <label for="uf" >Estado:</label>
+                    <label for="cep" >CEP:
+                    <input id="cep" class="cep" name="cep" type="text" onblur="pesquisacep(this.value);" pattern="[0-9]{2}\.[0-9]{3}-[0-9]{3}" /></label>
+                    <label for="uf" >Estado:
                     <select id="uf" class="uf" name="uf">
                         <option value="0">UF</option>
                         <?php
@@ -126,11 +202,11 @@
                                 echo '<option value="'. $estado['id'] .'" >'. $estado['uf'] .'</option>';
                             }
                         ?>
-                    </select>
-                    <label for="endereco" >Endereço:</label>
-                    <input id="endereco" name="endereco" type="text" maxlength="255" required />
-                    <label for="numero" >Numero:</label>
-                    <input id="numero" name="numero" type="text" maxlength="255" required />
+                    </select></label>
+                    <label for="endereco" >Endereço:
+                    <input id="endereco" name="endereco" type="text" maxlength="255" required /></label>
+                    <label for="numero" >Numero:
+                    <input id="numero" name="numero" type="text" maxlength="255" required /></label>
                 </fieldset>
                 <br />
                 <div style="text-align:center;"><button id="btn_registrar" type="submmit" name="action" value="Registrar" >Cadastrar</button></div>
