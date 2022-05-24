@@ -54,7 +54,7 @@
             header('location:home.php?erro=0');
         }*/
 
-        //header('location: home.php?msg=Operação concluída.');
+        header('location: home.php?msg=Operação concluída.');
 
     }
 
