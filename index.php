@@ -68,7 +68,7 @@
         <div class="container-login">
             <form action="valida_login.php" method="post" >
 
-                <h1 style="font-size: 50px" >Login</h1>
+                <h1 style="font-size: 35px" >Login</h1>
 
                 <label for="usuario">Login:</label>
                 <input id="usuario" name="usuario" type="text" />

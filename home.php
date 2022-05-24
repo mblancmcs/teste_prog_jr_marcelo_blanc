@@ -101,7 +101,7 @@
         <div class="container2">
             <form id="form-cadastro" action="crud_pessoas.php" method="post">
 
-                <h1>Cadastro</h1>
+                <h1 style="font-size:30px;" >Cadastro</h1>
 
                 <label class="espaco-label" for="nome">Nome:
                 <input id="nome" name="nome" type="text" maxlength="255" required /></label>
@@ -133,7 +133,7 @@
                     <input id="numero" name="numero" type="text" maxlength="255" required />
                 </fieldset>
                 <br />
-                <div style="text-align:center;"><button id="btn_registrar" type="submmit" name="action" value="Registrar" >Registrar</button></div>
+                <div style="text-align:center;"><button id="btn_registrar" type="submmit" name="action" value="Registrar" >Cadastrar</button></div>
             </form>
         </div>
         
