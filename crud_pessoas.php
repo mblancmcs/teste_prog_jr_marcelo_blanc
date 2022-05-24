@@ -34,7 +34,6 @@
         atualizarCadastro($pessoa_id, $endereco_id, $telefone_id, $data_atualizacao, $nome, $cpf, $rg, $data_nascimento, $telefone, $cep, $uf, $endereco, $numero);
 
         header('location: home.php?msg=0');
-        // Estou acostumado a fazer dessa forma, mas pelo que eu pude pesquisar sobre o padrão MVC, deve ter um script intermediário entre o model e o view, correto ? por isso criei uma classe chamada 'controller.js' onde ele é responsável por fazer essa ligação entre essas duas camadas.
 
     } else if($_POST['action'] == 'Deletar') {
         
@@ -45,19 +44,17 @@
         date_default_timezone_set('America/Sao_Paulo');
         $data_exclusao = date('Y-m-d H:i:s');
 
-        //******** */ Não estava redirecionando na funcão, então retornei para definir o redirecionamento
-        $resultado_query = deletarCadastro($pessoa_id, $endereco_id, $telefone_id, $data_exclusao);
+        //******** */ No MAC OS não está redirecionando na funcão, então retornei para definir o redirecionamento
+        /*$resultado_query = */deletarCadastro($pessoa_id, $endereco_id, $telefone_id, $data_exclusao);
         
-        //******** */ Não estava redirecionando na funcão, então retornei para definir o redirecionamento
+        /* No MAC OS não estava redirecionando na funcão, então retornei para definir o redirecionamento
         if($resultado_query){
             header('location:home.php?msg=0');
         } else {
             header('location:home.php?erro=0');
-        }
+        }*/
 
         //header('location: home.php?msg=Operação concluída.');
-
-        // Estou acostumado a fazer dessa forma, mas pelo que eu pude pesquisar sobre o padrão MVC, deve ter um script intermediário entre o model e o view, correto ? por isso criei uma classe chamada 'controller.js' onde ele é responsável por fazer essa ligação entre essas duas camadas.
 
     }
 

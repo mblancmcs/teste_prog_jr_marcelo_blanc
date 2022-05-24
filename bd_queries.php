@@ -153,17 +153,17 @@
 
         $sql="DELETE FROM enderecos WHERE id = '$endereco_id'";
 
-        /* -----Redirecionamento----- não funcionando no try catch da função
+        /* -----Redirecionamento----- NO MAC OS não está funcionando no try catch da função*/
         try{
             mysqli_query($link, $sql);
         } catch(mysqli_sql_exception) {
-            die(header('location:home.php?erro=1'));
+            die(header('location:home.php?erro=0'));
         } 
-        */
+        
 
         //*********** */
-        // Retornando pois não está redirecionando no try catch da função
-        return mysqli_query($link, $sql);
+        // Se usar o MAC OS, retornar, pois não está redirecionando no try catch da função
+        //return mysqli_query($link, $sql);
 
     }
 

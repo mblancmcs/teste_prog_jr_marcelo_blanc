@@ -3,6 +3,8 @@
     require_once('conexao_bd.php');
     require_once('bd_queries.php');
     require_once('valida_acesso.php');
+
+    error_reporting(0);
     
     $estados = selectUf();
     $tabela_pessoas = mostrarCadastros();
