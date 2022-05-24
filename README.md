@@ -4,6 +4,10 @@
 2. Copiar a pasta "valida_login_prog_jr_marcelo_blanc" para o diretório anterior ao chamado "htdocs";
 3. Ao clonar o repositório, o arquivo no formato "sql" estará lá, com o nome: "db_teste_marcelo_blanc.sql", bastando apenas criar um banco de dados com o mesmo nome e importar esse arquivo de formato "sql".
 
+## Acesso:
+Usuário: admin
+Senha: 1234
+
 ## Observações:
 
 1. No canto superior direito tem 2 botões, o mais a direita é o de sair, e o da esquerda é para entrar em contato comigo.
